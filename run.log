@@ -1,0 +1,2 @@
+perl script/1.scaleFactor.pl data/mapped_readCount.txt scaleFactor.txt
+perl script/2.callpeak_MACS2.pl scaleFactor.txt /home/park/Miyanari/ATAC/ATACprofWS/data/BED/ /home/park/Miyanari/ATAC/ATACprofWS/MACS2
