@@ -1,0 +1,9 @@
+# Spike: total read counts mapped to the spikein genome (DM6)
+# Target: total read counts mapped to the target genome (HG38)
+#Sample	Spike	Target
+NC_1	4165657	15361208
+NC_2	3753537	12121573
+PARP1_1	4652827	14347168
+PARP1_2	3585646	13066181
+TFDP1_1	2909301	10177613
+TFDP1_2	2348308	11196191
