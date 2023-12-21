@@ -105,6 +105,9 @@ By using the files in the directory "Profile/", these scripts look at the genome
 ## Example: 
 ```
 %>tar xfvz example.tar.gz
+%>cat run.log
 ```
-For guidance purposes, the output results are archived in this example directory.
+For guidance purposes, the some of output results have been archived in this example directory.
+In addition, the file **"run.log"** lists the command lines used above.
+
 
