@@ -91,18 +91,22 @@ This process also addresses peaks within 10k-bin genomic windows.
 
 ## Step 4: gathering all the results to be used for further analysis
 ```
-perl script/4.get_Profile.pl scaleFactor.txt /home/park/Miyanari/ATAC/ATACprofWS/postMACS2_v4-1/ /home/park/Miyanari/ATAC/ATACprofWS/Profile
+%>perl script/4.get_Profile.pl scaleFactor.txt /home/park/Miyanari/ATAC/ATACprofWS/postMACS2_v4-1/ /home/park/Miyanari/ATAC/ATACprofWS/Profile
 ```
 Now, the directory **"Profile"** includes the common and de-novo "Peak_Positions" and "Peak_Windows_10K". The file "Numbers.txt" shows the number of ATAC peaks in each category.
 For example, "TFDP1_KO_denovo.bed" is for the unique peaks that appeared after TFDP1 KO."TFDP1_NC_denovo.bed" is for the disappeared peaks in the TFDP1-KO sample (= unique peaks in the Control sample).
 
 ## Step 5: downstream analysis
 ```
-perl script/5.plot_Distribution.pl Profile/Peak_Windows_10K/ NULL Profile/Boxplot
-perl script/5.plot_Distribution.pl Profile/Peak_Windows_10K/ 2 Profile/Boxplot
-perl script/6.plot_PeakPie.pl Profile/Peak_Positions/ Profile/Diff_Peaks/ 2
+%>perl script/5.plot_Distribution.pl Profile/Peak_Windows_10K/ NULL Profile/Boxplot
+%>perl script/5.plot_Distribution.pl Profile/Peak_Windows_10K/ 2 Profile/Boxplot
+%>perl script/6.plot_PeakPie.pl Profile/Peak_Positions/ Profile/Diff_Peaks/ 2
 ```
 By using the files in the directory "Profile/", these scripts look at the genome-wide fold-change of accessibility of KO samples, differential peaks, distribution of unique/common peaks, etc.
 
-##
+## Example: 
+```
+%>tar xfvz example.tar.gz
+```
+For guidance purposes, the output results are archived in this example directory.
 
