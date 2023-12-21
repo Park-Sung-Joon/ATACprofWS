@@ -5,11 +5,9 @@
 <img src="https://github.com/Park-Sung-Joon/ATACprofWS/assets/52985953/b5bc30ec-c30d-4f5a-ab61-b42bee4b2b66" width=650>
 
 ## Requirements
-BEDTools
-macs2
-
-perl, BASH, and R libraries
-library(edgeR)
+1. BEDTools
+2. MACS2
+3. R library(edgeR)
 
 ## Preparing
 1. Edit **"data/mapped_readCount.txt"** with counting your mapped reads either to the Spikein genome or the Target genome. As an example, we prepared three samples with two replications per each (NC, PARP1, and TFDP1).
