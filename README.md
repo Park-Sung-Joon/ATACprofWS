@@ -1,7 +1,7 @@
 # ATACprofWS (ATAC-seq Profiler with Spike-in)
-## In-house scripts for profiling ATAC-seq peaks examined with Spike-in
-## These scripts compare the genome-wide accessibility dynamics caused by a TF KO, along with normalizing read counts and by performing statistical tests.  
-## These scripts calculate scale factors and detect common/unique ATAC-seq peaks within a KO sample and a control sample.
+### In-house scripts for profiling ATAC-seq peaks examined with Spike-in
+### These scripts compare the genome-wide accessibility dynamics caused by a TF KO, along with normalizing read counts and by performing statistical tests.  
+### These scripts calculate scale factors and detect common/unique ATAC-seq peaks within a KO sample and a control sample.
 <img src="https://github.com/Park-Sung-Joon/ATACprofWS/assets/52985953/b5bc30ec-c30d-4f5a-ab61-b42bee4b2b66" width=650>
 
 ## Requirements
