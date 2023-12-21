@@ -1,11 +1,17 @@
 perl script/1.scaleFactor.pl data/mapped_readCount.txt scaleFactor.txt
-perl script/2.callpeak_MACS2.pl scaleFactor.txt /home/park/Miyanari/ATAC/ATACprofWS/data/BED/ /home/park/Miyanari/ATAC/ATACprofWS/MACS2
 
+perl script/2.callpeak_MACS2.pl scaleFactor.txt /home/park/Miyanari/ATAC/ATACprofWS/data/BED/ /home/park/Miyanari/ATAC/ATACprofWS/MACS2
 sh MACS2/NC/NC_macs2.age 
 sh MACS2/PARP1/PARP1_macs2.age 
 sh MACS2/TFDP1/TFDP1_macs2.age 
 
 perl script/3.post_callpeak_MACS2_v4-1.pl scaleFactor.txt /home/park/Miyanari/ATAC/ATACprofWS/MACS2 /home/park/Miyanari/ATAC/ATACprofWS/postMACS2_v4-1
-
 sh postMACS2_v4-1/PARP1/PARP1_pstMACS2.age 
 sh postMACS2_v4-1/TFDP1/TFDP1_pstMACS2.age
+
+perl script/4.get_Profile.pl scaleFactor.txt /home/park/Miyanari/ATAC/ATACprofWS/postMACS2_v4-1/ /home/park/Miyanari/ATAC/ATACprofWS/Profile
+
+perl script/5.plot_Distribution.pl Profile/Peak_Windows_10K/ NULL Profile/Boxplot
+perl script/5.plot_Distribution.pl Profile/Peak_Windows_10K/ 2 Profile/Boxplot
+
+perl script/6.plot_PeakPie.pl Profile/Peak_Positions/ Profile/Diff_Peaks/ 2
