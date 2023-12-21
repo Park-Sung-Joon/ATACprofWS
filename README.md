@@ -40,10 +40,10 @@ Therefore, this conf file must be located in the current directory.
 ```
 You may see **"scaleFactor.txt"**
 
-## Step 2-1: preparing peak calling
+## Step 2-1: preparing scripts for peak calling
 ```
 %>perl script/2.callpeak_MACS2.pl scaleFactor.txt /your_directory/data/BED/ /your_directory/MACS2
-## Readidng scale factors from scaleFactor.txt
+## Reading scale factors from scaleFactor.txt
 #	6 SFs
 #	3 SFs: TFDP1 PARP1 NC
 
@@ -66,18 +66,24 @@ Here, we need BED files that include the location of mapped reads. You may conve
 ```
 We have prepared the example BED files ("data/BED/"), which included the top **500,000** lines only in the original BED files.
 
-## Step 2-2: running each peak-calling script 
+## Step 2-2: running the peak-calling scripts 
 ```
 %>sh MACS2/NC/NC_macs2.age
 %>sh MACS2/PARP1/PARP1_macs2.age 
 %>sh MACS2/TFDP1/TFDP1_macs2.age 
 ```
+This process merges the two replicates after running MACS2. 
 
-## Step 3
+## Step 3: preparing scripts for capturing final peak sets
 ```
 %>perl script/3.post_callpeak_MACS2_v4-1.pl scaleFactor.txt /your_directory/MACS2 /your_directory/postMACS2_v4-1
 %>sh postMACS2_v4-1/PARP1/PARP1_pstMACS2.age 
 %>sh postMACS2_v4-1/TFDP1/TFDP1_pstMACS2.age
 ```
+This process adjusts the read counts at each MACS2 peak using scale Factors.
+This process tests statistical significance. The thresholds were defined in **ATACprofWS.conf**. 
+This process also generates files for de novo peaks (unique in a KO sample) and common peaks (found in both KO and Control samples).
+This process also addresses peaks within 10k-bin genomic windows.
+
 
 ## Step 4
