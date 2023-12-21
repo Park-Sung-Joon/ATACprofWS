@@ -74,16 +74,35 @@ We have prepared the example BED files ("data/BED/"), which included the top **5
 ```
 This process merges the two replicates after running MACS2. 
 
-## Step 3: preparing scripts for capturing final peak sets
+## Step 3-1: preparing scripts for capturing final peak sets
 ```
 %>perl script/3.post_callpeak_MACS2_v4-1.pl scaleFactor.txt /your_directory/MACS2 /your_directory/postMACS2_v4-1
-%>sh postMACS2_v4-1/PARP1/PARP1_pstMACS2.age 
-%>sh postMACS2_v4-1/TFDP1/TFDP1_pstMACS2.age
 ```
 This process adjusts the read counts at each MACS2 peak using scale Factors.
 This process tests statistical significance. The thresholds were defined in **ATACprofWS.conf**. 
 This process also generates files for de novo peaks (unique in a KO sample) and common peaks (found in both KO and Control samples).
 This process also addresses peaks within 10k-bin genomic windows.
 
+## Step 3-2: running the scripts
+```
+%>sh postMACS2_v4-1/PARP1/PARP1_pstMACS2.age 
+%>sh postMACS2_v4-1/TFDP1/TFDP1_pstMACS2.age
+```
 
-## Step 4
+## Step 4: gathering all the results to be used for further analysis
+```
+perl script/4.get_Profile.pl scaleFactor.txt /home/park/Miyanari/ATAC/ATACprofWS/postMACS2_v4-1/ /home/park/Miyanari/ATAC/ATACprofWS/Profile
+```
+Now, the directory **"Profile"** includes the common and de-novo "Peak_Positions" and "Peak_Windows_10K". The file "Numbers.txt" shows the number of ATAC peaks in each category.
+For example, "TFDP1_KO_denovo.bed" is for the unique peaks that appeared after TFDP1 KO."TFDP1_NC_denovo.bed" is for the disappeared peaks in the TFDP1-KO sample (= unique peaks in the Control sample).
+
+## Step 5: downstream analysis
+```
+perl script/5.plot_Distribution.pl Profile/Peak_Windows_10K/ NULL Profile/Boxplot
+perl script/5.plot_Distribution.pl Profile/Peak_Windows_10K/ 2 Profile/Boxplot
+perl script/6.plot_PeakPie.pl Profile/Peak_Positions/ Profile/Diff_Peaks/ 2
+```
+By using the files in the directory "Profile/", these scripts look at the genome-wide fold-change of accessibility of KO samples, differential peaks, distribution of unique/common peaks, etc.
+
+##
+
